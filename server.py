@@ -6,16 +6,17 @@ app.secret_key = 'Harry Potter was mid'
 
 @app.route('/')
 def landing_page():
+    # STATIC WELCOME PAGE
     return render_template('index.html')
 
 
 @app.route('/submit', methods=["GET", "POST"])
 def process_submission():
-    print(request.form)
+    # USER SUBMITTED INFO. SAVE IT IN SESSION AND LOAD RESULTS PAGE
     session['name'] = request.form['name']
     session['dojo_location'] = request.form['dojo_location']
     session['favorite_language'] = request.form['favorite_language']
-    session['comment'] =  request.form['comment']
+    session['comment'] = request.form['comment']
     return render_template('results.html')
 
 
